@@ -1,0 +1,29 @@
+:root {
+    --primary-color: #511f9d;
+    --secondary-color: #308695;
+    --tertiary-color: #dfae64;
+    --fourth-color: #686c6d;
+    --black: #000;
+    --white: #fff;
+    --font-family: 'Mukta'
+    --h1-font: 30px;
+    --h2-font: 24px;
+    --h3-font: 18px;
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    font-size: medium;
+    text-align: center;
+    padding: 10px 26px;
+    margin: 8px 2px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 45px;
+}
