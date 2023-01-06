@@ -31,10 +31,23 @@ let pokemonRepository = (function() {
     function getAll() {
       return pokemonList;
     }
-  
+
+    function addListItem (pokemon) {
+      let repository = document.querySelector(".pokemon-list");
+      let listPokemon = document.createElement("li");
+      let button = document.createElement("button");
+      button.innerText = pokemon.name;
+      button.classList.add("button-class");
+      //added event listener: returns all pokemon info to console when button is clicked
+      button.addEventListener("click", (Event) => showDetails(pokemon));
+      listPokemon.appendChild(button);
+      repository.appendChild(listPokemon);
+    }
+
     return {
       add: add,
-      getAll: getAll
+      getAll: getAll,
+      addListItem: addListItem
     };
   
   }) ();
