@@ -67,3 +67,15 @@ document.write(pokemonRepository.getAll())
 pokemonRepository.getAll().forEach(function () {
     pokemonRepository.add(pokemon);
 });
+
+/*replace for loop for forEach loop*/
+pokemonList.forEach (function(pokemon) {
+    if (pokemon.height >=5) {
+        document.write(pokemon.name + " (height: " + pokemon.height + "m) - Wow, that is a big pokemon!" + "<br>")
+    } else if (pokemon.height >= 1.6 && pokemon.height < 5) {
+        document.write(pokemon.name + " (height: " + pokemon.height + "m) - That is a medium pokemon!" + "<br>")
+    } else {
+        document.write(pokemon.name + " (height: " + pokemon.height + "m) - That is a small pokemon!" + "<br>")
+    }
+//      console.log(pokemon);
+    });
