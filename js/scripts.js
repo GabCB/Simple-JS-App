@@ -52,6 +52,7 @@ let pokemonRepository = (function() {
   
   }) ();
   
+pokemonRepository.add({ ID:10, name: "Pikachu", type: "fire", height: 2.3, ability: "blaze" });
 
 /*replace for loop for forEach loop
 pokemonList.forEach (function(pokemon) {
