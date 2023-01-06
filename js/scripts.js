@@ -66,7 +66,7 @@ pokemonList.forEach (function(pokemon) {
 //      console.log(pokemon);
     });*/
 
-/* forEach loop uses pokemonRepository.getAll() instead of pokemonList to retrieve data now that array is protected by IIFE*/
+/* forEach loop uses pokemonRepository.getAll() instead of pokemonList to retrieve data now that array is protected by IIFE
 pokemonRepository.getAll().forEach(function(pokemon) {
     if (pokemon.height >=5) {
         document.write(pokemon.name + " (height: " + pokemon.height + "m) - Wow, that is a big pokemon!" + "<br>")
@@ -74,6 +74,10 @@ pokemonRepository.getAll().forEach(function(pokemon) {
           document.write(pokemon.name + " (height: " + pokemon.height + "m) - That is a medium pokemon!" + "<br>")
     } else {
           document.write(pokemon.name + " (height: " + pokemon.height + "m) - That is a small pokemon!" + "<br>")
-    }
-        
+    }*/
+
+pokemonRepository.getAll().forEach(function(pokemon) {
+  pokemonRepository.addListItem(pokemon);
 });
+
+
