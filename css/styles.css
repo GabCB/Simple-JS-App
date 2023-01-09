@@ -18,19 +18,20 @@ body {
 }
 
 .button-class {
-    background-color: var(--secondary-color); /* Green */
+    background-color: var(--secondary-color);
     border: none;
-    color: white;
-    padding: 16px 32px;
+    color: var(--white);
+    padding: 16px 26px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: medium;
+    margin: 8px 2px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    background-color: white;
-    color: var(--black);
+    /*background-color: white;*/
+   /*color: black;*/
     border: 2px solid var(--secondary-color);
-  }
+    border-radius: 45px;
+}
