@@ -1,83 +1,88 @@
-/*define new variable and wrap in IIFE to eliminate code from global use */
-let pokemonRepository = (function() {
+let pokemonRepository = (function () {
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=25';
 
-    let pokemonList = [
-      { ID: "1", name: "Bulbasaur", type: ["grass", "poison"], height: 0.7, ability: "overgrow" },
-      { ID: "2", name: "Ivysaur", type: ["grass", "poison"], height: 1, ability: "overgrow" },
-      { ID: "3", name: "Venusaur", type: ["grass", "poison"], height: 2, ability: "overgrow" },
-      { ID: "4", name: "Charmender", type: "fire", height: 0.6, ability: "blaze" },
-      { ID: "5", name: "Charmeleon", type: "fire", height: 1.1, ability: "blaze" },
-      { ID: "6", name: "Charizard", type: ["fire", "flying"], height: 1.7, ability: "blaze" },
-      { ID: "7", name: "Squirtle", type: "water", height: 0.5, ability: "torrent" },
-      { ID: "8", name: "Wartortle", type: "water", height: 1, ability: "torrent" },
-      { ID: "9", name: "Blastoise", type: "water", height: 1.6, ability: "torrent" },
-    ]
-  
-    function add(pokemon){
-      if (
+function add(pokemon){
+  if (
       typeof pokemon === "object" &&
-      "ID" in pokemon &&
-      "name" in pokemon &&
-      "type" in pokemon &&
-      "height" in pokemon &&
-      "ability" in pokemon
-    ) {
-     pokemonList.push(pokemon);
-    } else {
-      console.log("pokemon is not correct");
-    }
-    }
-  
-    function getAll() {
-      return pokemonList;
-    }
+      "name" in pokemon
+  ) {
+  pokemonList.push(pokemon);
+  } else {
+  console.log("pokemon is not correct");
+  }
+}
 
-    function addListItem (pokemon) {
-      let repository = document.querySelector(".pokemon-list");
-      let listPokemon = document.createElement("li");
-      let button = document.createElement("button");
-      button.innerText = pokemon.name;
-      button.classList.add("button-class");
-      //added event listener: returns all pokemon info to console when button is clicked
-      button.addEventListener("click", (Event) => showDetails(pokemon));
-      listPokemon.appendChild(button);
-      repository.appendChild(listPokemon);
-    }
+function getAll() {
+  return pokemonList;
+}
 
-    return {
-      add: add,
-      getAll: getAll,
-      addListItem: addListItem
-    };
-  
-  }) ();
-  
-pokemonRepository.add({ ID:10, name: "Pikachu", type: "fire", height: 2.3, ability: "blaze" });
+function addListItem (pokemon) {
+  let pokemonList = document.querySelector(".pokemon-list");
+  let listPokemon = document.createElement("li");
+  let button = document.createElement("button");
+  button.innerText = pokemon.name;
+  button.classList.add("button-class");
+  listPokemon.appendChild(button);
+  pokemonList.appendChild(listPokemon);
+  //added event listener: returns all pokemon info to console when button is clicked
+  button.addEventListener("click", function(event) {
+  showDetails(pokemon);
+  }); // showDetails function =>showDetails(pokemon)); instead of console.log
+}
 
-/*replace for loop for forEach loop
-pokemonList.forEach (function(pokemon) {
-    if (pokemon.height >=5) {
-        document.write(pokemon.name + " (height: " + pokemon.height + "m) - Wow, that is a big pokemon!" + "<br>")
-    } else if (pokemon.height >= 1.6 && pokemon.height < 5) {
-        document.write(pokemon.name + " (height: " + pokemon.height + "m) - That is a medium pokemon!" + "<br>")
-    } else {
-        document.write(pokemon.name + " (height: " + pokemon.height + "m) - That is a small pokemon!" + "<br>")
-    }
-//      console.log(pokemon);
-    });*/
+function loadList() {
+  return fetch(apiUrl).then(function (response) {
+  return response.json();
+  }).then(function (json) {
+      json.results.forEach (function (item){
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.Url
+          };
+          add(pokemon);
+          console.log(pokemon);
+      });
+  }).catch(function (e) {
+      console.error(e);
+  })
+}
 
-/* forEach loop uses pokemonRepository.getAll() instead of pokemonList to retrieve data now that array is protected by IIFE
-pokemonRepository.getAll().forEach(function(pokemon) {
-    if (pokemon.height >=5) {
-        document.write(pokemon.name + " (height: " + pokemon.height + "m) - Wow, that is a big pokemon!" + "<br>")
-    } else if (pokemon.height >= 1.6 && pokemon.height < 5) {
-          document.write(pokemon.name + " (height: " + pokemon.height + "m) - That is a medium pokemon!" + "<br>")
-    } else {
-          document.write(pokemon.name + " (height: " + pokemon.height + "m) - That is a small pokemon!" + "<br>")
-    }*/
+function loadDetails(item) {
+  let url = item.detailsUrl;
+  return fetch(url).then (function (response) {
+      return response.json();
+  }).then(function (details) {
+  //Now we add the details to the item
+    item.imageUrl = details.sprites.front_default;
+    item.height = details.height;
+    item.types = details.types;
+  }).catch(function (e) {
+      console.error (e);
+  });
+}
 
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
+function showDetails(item) {
+  pokemonRepository.loadDetails(item).then (function () {
+      console.log(item);
+  });
+}
+
+return {
+  add: add,
+  getAll: getAll,
+  addListItem: addListItem,
+  loadList: loadList,
+  loadDetails: loadDetails,
+  showDetails: showDetails
+};
+
+}) ();
+
+/*pokemonRepository.add({ ID:10, name: "Pikachu", type: "fire", height: 2.3, ability: "blaze" });*/
+
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+      pokemonRepository.addListItem(pokemon);
+  });
 });
-
-
