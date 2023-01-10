@@ -38,7 +38,7 @@ function loadList() {
       json.results.forEach (function (item){
           let pokemon = {
             name: item.name,
-            detailsUrl: item.Url
+            detailsUrl: item.url
           };
           add(pokemon);
           console.log(pokemon);
