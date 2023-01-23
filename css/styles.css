@@ -1,83 +1,99 @@
 :root {
-    
-    --primary-color: #8445e2;
-    --secondary-color: #e49ac3;
-    --highlight-color: #308695;
-    --transition-color: #b298d8;
-    --black: #000;
-    --white: #fff;
-    --font-family: 'Mukta'
-    
+  --highlight-color: #e78140;
+  --secondary-color: #20b5cc;
+  --black: #000;
+  --white: #fff;
+  --shade-of-black: #031616;
+  --font-family: "Yatra One";
+  --secondary-font-family: "Press Start 2P";
 }
 
 body {
-    font-family: 'Mukta', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
+  font-family: var(--font-family), sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  background-color: var(--black);
+  background-image: url("..//img/background.png");
+  background-size: cover;
+  background-position: center;
 }
 
 h1 {
-    font-weight: 700;
-    font-size: 30px;
+  text-align: center;
+  font-size: 30px;
+  font-style: italic;
 }
-
+h2.modal-title {
+  font-family: var(--secondary-font-family);
+  font-size: 20px;
+}
+p {
+  font-size: 20px;
+}
 .pokedex {
-    color: var(--black);
-    text-align: center;
-    margin-top: 90px; 
-    display: flex;
-    flex-direction: column;
+  color: var(--white);
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .pokemon-header {
-    padding: 10px;
-    font-weight: 700;
+  /*justify-content: center;*/
+  padding: 10px;
+  font-weight: 700;
+  font-size: 90px;
+}
+@media all and (max-width: 500px) {
+  .pokemon-header {
+    font-size: 60px;
+  }
+}
+
+ul {
+  justify-content: center;
+  list-style-type: none;
+}
+li {
+  display: flex;
+  justify-content: center;
 }
 
 .pokemon-button {
-    width: 25%;
-    height: 50px;
-    background-color: var(--primary-color);
-    /* removes bootstrap button border color */
-    border: none;
-    border-radius: 20px;
+  color: var(--black);
+  width: 180px;
+  height: 180px;
+  padding: 40px;
+  background-color: whitesmoke;
+  border: 2px solid;
+  border-radius: 30px;
+  font-size: 20px;
 }
-  /* removes row border lines in background */
+
+/* removes row border lines in background */
 .list-group-item {
-    border: none;
+  border: none;
+  background-color: transparent;
 }
 
 .pokemon-button:hover {
-    background-color: var(--transition-color);
-    transition-duration: 0s;
-}
-
-.btn-outline-info {
-    color: var(--white);
-    border-color: var(--white);
-}
-
-.btn-outline-info:hover {
-    background-color: var(--transition-color);
-    transition-duration: 0s;
-    border-color: var(--transition-color);
-}
-
-.input-group-btn {
-    background-color: none;
+  background-color: var(--shade-of-black);
+  border-color: var(--highlight-color);
+  transition-duration: 0s;
+  font-size: 20px;
 }
 
 .modal {
-    text-align: center;
+  text-align: center;
 }
 
 .pokemon-img {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .modal-dialog {
-    border: 8px solid;
-    border-radius: 12px;
-    border-color: var(--highlight-color);
+  border: 10px solid;
+  border-color: var(--highlight-color);
+  border-radius: 5px;
 }
