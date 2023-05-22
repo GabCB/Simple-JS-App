@@ -1,7 +1,15 @@
 # Pokedex App
-https://gabcb.github.io/Simple-JS-App/
+![Pokedex App](https://i.imgur.com/dTqYoNm.png)
 
-## Description
+## Table of Contents
+- [Overview](#overview)
+- [Key features](#key-features)
+- [Built with](#built-with)
+- [Dependencies](#dependencies)
+- [Resources](#resources)
+- [Links](#links)
+
+## Overview
 
 This web application loads data from an external API and enables the viewing of Pokémon details by clicking the corresponding button.
 
@@ -31,5 +39,9 @@ This web application loads data from an external API and enables the viewing of 
 
 ## Resources
 
-- PokeAPI (https://pokeapi.co/api/v2/pokemon/)
-- Google Fonts
+[PokeAPI](https://pokeapi.co/api/v2/pokemon/) <br>
+Google Fonts
+
+## Links
+[Live Site](https://gabcb.github.io/Simple-JS-App/)
+[Code URL](https://github.com/GabCB/Simple-JS-App)
