@@ -43,5 +43,5 @@ This web application loads data from an external API and enables the viewing of 
 Google Fonts
 
 ## Links
-[Live Site](https://gabcb.github.io/Simple-JS-App/)
-[Code URL](https://github.com/GabCB/Simple-JS-App)
+[Live Site](https://gabcb.github.io/Simple-JS-App/) <br>
+[Code URL](https://github.com/GabCB/Simple-JS-App) <br>
